@@ -45,6 +45,11 @@ coords = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]
 
 visited.add((0, 0))
 
+
+moves = [['R', 5],['U', 8],['L', 8],['D', 3],['R', 17],['D', 10],['L', 25],['U', 20]]
+
+
+
 for command, times in moves:
     if command == 'U':
         coords[0][1] += int(times)
@@ -57,8 +62,9 @@ for command, times in moves:
  
     
     for _ in range(1, 10):
+        print(coords)
         while abs(coords[_-1][0] - coords[_][0]) > 1 or abs(coords[_-1][1] - coords[_][1]) > 1:
-            
+                    
             if coords[_-1][0] - coords[_][0] > 0:
                     coords[_][0] += 1
             elif coords[_-1][0] - coords[_][0] < 0:
@@ -69,8 +75,6 @@ for command, times in moves:
             elif coords[_-1][1] - coords[_][1] < 0:
                     coords[_][1] -= 1
                 
-    visited.add((coords[9][0], coords[9][1]))
-    print(coords); input()
-
-
+            if _ == 9: visited.add((coords[9][0], coords[9][1]))
+                
 print(len(visited))
